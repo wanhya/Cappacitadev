@@ -1,4 +1,5 @@
 Cappacitadev
 
-Este repositório tem por finalidade armazenar a resolução do primeiro exercicio proposto na fase Hero da Cappacita Dev.
+
+Este repositório tem por finalidade armazenar os exercicio propostos na fase Hero da Cappacita Dev.
 
