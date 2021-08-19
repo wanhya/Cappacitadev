@@ -17,8 +17,16 @@ O curso é dividido em módulos, e a cada módulo temos uma nova atividade.
     4. Alterar os Pokemons salvos
     5. Deletar os Pokemons
     6. Realizar batalhas entre os Pokemons
-    7. Curar os Pokemons após as batalhas
+    7. Curar os Pokemons após as batalhas   
+    
+    <img src ="http://25.media.tumblr.com/tumblr_l8sknxrLX61qdtuqno1_500.gif" alt="drawing" width="300" align = "right"/>
+       
+### 🛠 Tecnologias
 
+As seguintes ferramentas estão sendo usadas na construção do projeto:
+
+- [Node.js](https://nodejs.org/en/)
+- [Postman](https://www.postman.com/)
 
  
 
