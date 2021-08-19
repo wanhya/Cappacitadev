@@ -68,4 +68,18 @@ function batalhapokemon(id1, id2){
 
 }
 
-module.exports = { salvarpokemons, mostrarpokemon, mostrarpokemons, atualizarpokemon, deletarpokemon, batalhapokemon}
+function curapokemon(id) {
+    const pocao = 20
+    const pokemonfraco = pokemons[id]
+
+    if(pokemonfraco.hp < 90) { 
+        pokemonfraco.hp = pokemonfraco.hp + pocao 
+    } else if(pokemonfraco.hp >= 90 && pokemonfraco.hp <100) {
+        pokemonfraco.hp = pokemonfraco.hp + pocao - 10
+    } 
+    if (pokemonfraco.hp > 100) pokemonfraco.hp = 100   
+
+    return `${pokemonfraco.nome}: Força Total ${pokemonfraco.hp}`   
+   
+}
+module.exports = { salvarpokemons, mostrarpokemon, mostrarpokemons, atualizarpokemon, deletarpokemon, batalhapokemon, curapokemon}

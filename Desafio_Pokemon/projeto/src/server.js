@@ -28,6 +28,9 @@ app.put('/pokemons/:id', (req, res) => {
     const pokemon = database.atualizarpokemon(req.params.id, {
         nome: req.body.nome,
         tipo: req.body.tipo,
+        fraqueza: req.body.fraqueza,
+        resistencia: req.body.resistencia,
+        hp: 100,
         id: parseInt(req.params.id)
     })
     res.send(pokemon)
@@ -41,5 +44,8 @@ app.post ('/batalha', (req, res) => {
     res.send(database.batalhapokemon(req.body.id1, req.body.id2))
 })
 
+app.post ('/cura', (req, res) => {
+    res.send(database.curapokemon(req.body.id))
+})
 
 app.listen(3003)
