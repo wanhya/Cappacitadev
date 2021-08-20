@@ -77,9 +77,9 @@ function curapokemon(id) {
     } else if(pokemonfraco.hp >= 90 && pokemonfraco.hp <100) {
         pokemonfraco.hp = pokemonfraco.hp + pocao - 10
     } 
-    if (pokemonfraco.hp > 100) pokemonfraco.hp = 100   
+     
 
-    return `${pokemonfraco.nome}: Força Total ${pokemonfraco.hp}`   
+    return `${pokemonfraco.nome}: Força Total ${pokemonfraco.hp}`    
    
 }
 module.exports = { salvarpokemons, mostrarpokemon, mostrarpokemons, atualizarpokemon, deletarpokemon, batalhapokemon, curapokemon}
