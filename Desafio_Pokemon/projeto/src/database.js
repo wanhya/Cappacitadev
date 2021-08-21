@@ -78,8 +78,8 @@ function curapokemon(id) {
         pokemonfraco.hp = pokemonfraco.hp + pocao - 10
     } 
     
-  
-    return `O HP do ${pokemonfraco.nome} é de: ${pokemonfraco.hp}` 
+      
+    return `O HP do ${pokemonfraco.nome} é de: ${pokemonfraco.hp}`  
    
 }
 
