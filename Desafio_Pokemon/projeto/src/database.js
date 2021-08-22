@@ -83,4 +83,6 @@ function curapokemon(id) {
    
 }
 
+
+
 module.exports = { salvarpokemons, mostrarpokemon, mostrarpokemons, atualizarpokemon, deletarpokemon, batalhapokemon, curapokemon}
