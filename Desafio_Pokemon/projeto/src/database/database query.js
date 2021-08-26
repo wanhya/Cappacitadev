@@ -2,16 +2,8 @@ const {databaseconnection} = require ('./connection')
 
 
 async function salvarpokemons(pokemon){
-    
-    const insertpokemon = {
-            nome_pokemon: pokemon.nome,
-            tipo: pokemon.tipo,
-            resistencia: pokemon.resistencia,
-            fraqueza: pokemon.fraqueza,
-            hp: pokemon.hp
-        }
-    const result = await databaseconnection('pokemons').insert(insertpokemon)    
-    
+    const queryinsertpokemon = `INSERT INTO pokemons(nome_pokemon, tipo, resistencia, fraqueza, hp) VALUES ('${pokemon.nome}', '${pokemon.tipo}', '${pokemon.resistencia}', '${pokemon.fraqueza}', '${pokemon.hp}')`
+    const result = await databaseconnection.raw(queryinsertpokemon)
     console.log(result)
     if(result) {
         return {
@@ -20,7 +12,7 @@ async function salvarpokemons(pokemon){
             resistencia: pokemon.resistencia,
             fraqueza: pokemon.fraqueza,
             hp: pokemon.hp,
-            id: result[0]
+            id: result[0].insertId
         }
     }else {
         console.log("deu erro")
@@ -29,48 +21,32 @@ async function salvarpokemons(pokemon){
 }
 
 async function mostrarpokemon(id){
-   
-    const result = await databaseconnection.where({id}).select('nome_pokemon', 'tipo' , 'resistencia', 'fraqueza', 'hp', 'id').from('pokemons')
+    const queryselectpokemon = `SELECT * FROM pokemons WHERE id = ${id}`
+    const result = await databaseconnection.raw(queryselectpokemon)
     return result[0]
 }
 
 async function mostrarpokemons() {
-   
-    const result = await databaseconnection.select('nome_pokemon', 'tipo' , 'resistencia', 'fraqueza', 'hp', 'id').from('pokemons')
-    return result
-}
-
-async function atualizarpokemon(id, pokemon) {
-    const updatepokemon = {
-        nome_pokemon: pokemon.nome,
-            tipo: pokemon.tipo,
-            resistencia: pokemon.resistencia,
-            fraqueza: pokemon.fraqueza,
-            hp: pokemon.hp
-    }
-    const result = await databaseconnection('pokemons').where({id}).update(updatepokemon)
-
-    console.log(result)
-    if(result) {
-        return {
-            nome: pokemon.nome,
-            tipo: pokemon.tipo,
-            resistencia: pokemon.resistencia,
-            fraqueza: pokemon.fraqueza,
-            hp: pokemon.hp,
-            id
-        }
-    }else {
-        console.log("deu erro")
-    }
-  
-}
-
-async function deletarpokemon(id) {
-   // sequence._id = sequence._id -1
-  
-  const result = await databaseconnection('pokemons').where({id}).del()
+    const queryselectpokemon = `SELECT * FROM pokemons`
+    const result = await databaseconnection.raw(queryselectpokemon)
     return result[0]
+}
+
+function atualizarpokemon(id, pokemon) {
+    pokemons[id] = pokemon
+    return pokemon
+}
+
+function deletarpokemon(id) {
+    sequence._id = sequence._id -1
+    const pokemondeletado = pokemons[1]
+    pokemons.splice(id, 1)
+    pokemons.forEach(pokemon => {
+        if(pokemon.id > id) {
+            pokemon.id = pokemon.id - 1
+        }
+    })
+    return pokemondeletado
 }
 
 function batalhapokemon(id1, id2){

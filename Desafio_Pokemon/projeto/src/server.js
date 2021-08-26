@@ -5,12 +5,12 @@ const bodyparser = require('body-parser')
 
 app.use(bodyparser.urlencoded ({extended: true}))
 
-app.get('/pokemons', (req, res) => {
-    res.send(database.mostrarpokemons())
+app.get('/pokemons', async (req, res) => {
+    res.send(await database.mostrarpokemons())
 })
 
-app.get('/pokemons/:id', (req, res) => {
-    res.send(database.mostrarpokemon(req.params.id))
+app.get('/pokemons/:id', async (req, res) => {
+    res.send(await database.mostrarpokemon(req.params.id))
 })
 
 app.post('/pokemons', async (req, res) => {
@@ -24,8 +24,8 @@ app.post('/pokemons', async (req, res) => {
     res.send(pokemon) 
 })
 
-app.put('/pokemons/:id', (req, res) => {
-    const pokemon = database.atualizarpokemon(req.params.id, {
+app.put('/pokemons/:id', async (req, res) => {
+    const pokemon = await database.atualizarpokemon(req.params.id, {
         nome: req.body.nome,
         tipo: req.body.tipo,
         fraqueza: req.body.fraqueza,
@@ -36,8 +36,8 @@ app.put('/pokemons/:id', (req, res) => {
     res.send(pokemon)
 })
 
-app.delete('/pokemons/:id', (req, res) => {
-    res.send(database.deletarpokemon(req.params.id))
+app.delete('/pokemons/:id', async  (req, res) => {
+    res.send(await database.deletarpokemon(req.params.id))
 })
 
 app.post ('/batalha', (req, res) => {
