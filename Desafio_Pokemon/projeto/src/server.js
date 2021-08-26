@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express()
-const database = require('./database')
+const database = require('./database/database')
 const bodyparser = require('body-parser')
 
 app.use(bodyparser.urlencoded ({extended: true}))
@@ -13,15 +13,15 @@ app.get('/pokemons/:id', (req, res) => {
     res.send(database.mostrarpokemon(req.params.id))
 })
 
-app.post('/pokemons', (req, res) => {
-    const pokemon = database.salvarpokemons ({
+app.post('/pokemons', async (req, res) => {
+    const pokemon = await database.salvarpokemons ({
         nome: req.body.nome,
         tipo: req.body.tipo,
         fraqueza: req.body.fraqueza,
         resistencia: req.body.resistencia,
         hp: 100
     })
-    res.send(pokemon)
+    res.send(pokemon) 
 })
 
 app.put('/pokemons/:id', (req, res) => {
