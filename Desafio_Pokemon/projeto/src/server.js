@@ -44,8 +44,12 @@ app.post ('/batalha', (req, res) => {
     res.send(database.batalhapokemon(req.body.id1, req.body.id2))
 })
 
-app.post ('/cura', (req, res) => {
-    res.send(database.curapokemon(req.body.id))
+app.post ('/cura', async (req, res) => {
+    res.send(await database.curapokemon(req.body.id))
 })
+
+//app.put ('/cura:id', async (req, res) => {
+ //   res.send(await database.curapokemon(req.body.id))
+//})
 
 app.listen(3003)

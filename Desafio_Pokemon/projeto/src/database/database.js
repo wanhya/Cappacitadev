@@ -67,7 +67,7 @@ async function atualizarpokemon(id, pokemon) {
 }
 
 async function deletarpokemon(id) {
-   // sequence._id = sequence._id -1
+   
   
   const result = await databaseconnection('pokemons').where({id}).del()
     return result[0]
@@ -115,7 +115,7 @@ function curapokemon(id) {
         pokemonfraco.hp = pokemonfraco.hp + pocao 
     } else if(pokemonfraco.hp >= 90 && pokemonfraco.hp <100) {
         pokemonfraco.hp = pokemonfraco.hp + pocao - 10
-    } 
+   } 
     
       
     return `O HP do ${pokemonfraco.nome} é de: ${pokemonfraco.hp}`  
